@@ -24,6 +24,28 @@ window.addEventListener("DOMContentLoaded", () => {
         .then(data => document.getElementById("footer").innerHTML = data);
 });
 
+// Mobile hamburger menu toggle
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const hamburger = document.querySelector('.hamburger');
+    
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+}
+
+// Close mobile menu when clicking on a link
+document.addEventListener('click', function(event) {
+    if (event.target.matches('.nav-link')) {
+        const navLinks = document.querySelector('.nav-links');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (navLinks && hamburger) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    }
+});
+
 function setupNavbarScrollBehavior(navbar) {
     let lastScrollTop = 0;
 
