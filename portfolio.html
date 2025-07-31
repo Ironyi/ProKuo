@@ -15,30 +15,78 @@
 
 
     <main class="portfolio-section">
-        <h1>Our Work</h1>
+
         <div class="project-gallery">
             <div class="project">
-                <img src="assets/img/project1_after.jpg" alt="Project 1 After">
                 <p><strong>Bathroom Renovation:</strong> Complete tiling, new fixtures, and lighting installation.</p>
-                <div class="slider">
-                    <img src="assets/img/project1_before.jpg" alt="Before">
-                    <img src="assets/img/project1_after.jpg" alt="After">
+                <div class="slider-container">
+                    <div class="slider" data-project="1">
+                        <div class="slide active">
+                            <img src="assets/img/project1_before.jpg" alt="Before">
+                            <div class="slide-label">Before</div>
+                        </div>
+                        <div class="slide">
+                            <img src="assets/img/project1_after.jpg" alt="After">
+                            <div class="slide-label">After</div>
+                        </div>
+                    </div>
+                    <button class="prev-btn" onclick="event.stopPropagation(); changeSlide(-1, 1)">&#8249;</button>
+                    <button class="next-btn" onclick="event.stopPropagation(); changeSlide(1, 1)">&#8250;</button>
+                    <div class="slide-indicators">
+                        <span class="indicator active" onclick="event.stopPropagation(); currentSlide(1, 1)"></span>
+                        <span class="indicator" onclick="event.stopPropagation(); currentSlide(2, 1)"></span>
+                    </div>
+                </div>
+                <div class="project-hover-overlay">
+                    <button class="view-details-btn" onclick="openModal(1)">View More Details</button>
                 </div>
             </div>
             <div class="project">
-                <img src="assets/img/project2_after.jpg" alt="Project 2 After">
                 <p><strong>Kitchen Remodel:</strong> Countertops, cabinets, backsplash, and lighting updates.</p>
-                <div class="slider">
-                    <img src="assets/img/project2_before.jpg" alt="Before">
-                    <img src="assets/img/project2_after.jpg" alt="After">
+                <div class="slider-container">
+                    <div class="slider" data-project="2">
+                        <div class="slide active">
+                            <img src="assets/img/project2_before.jpg" alt="Before">
+                            <div class="slide-label">Before</div>
+                        </div>
+                        <div class="slide">
+                            <img src="assets/img/project2_after.jpg" alt="After">
+                            <div class="slide-label">After</div>
+                        </div>
+                    </div>
+                    <button class="prev-btn" onclick="event.stopPropagation(); changeSlide(-1, 2)">&#8249;</button>
+                    <button class="next-btn" onclick="event.stopPropagation(); changeSlide(1, 2)">&#8250;</button>
+                    <div class="slide-indicators">
+                        <span class="indicator active" onclick="event.stopPropagation(); currentSlide(1, 2)"></span>
+                        <span class="indicator" onclick="event.stopPropagation(); currentSlide(2, 2)"></span>
+                    </div>
+                </div>
+                <div class="project-hover-overlay">
+                    <button class="view-details-btn" onclick="openModal(2)">View More Details</button>
                 </div>
             </div>
             <div class="project">
-                <img src="assets/img/project3_after.jpg" alt="Project 3 After">
                 <p><strong>Living Room Makeover:</strong> Flooring, painting, molding, and custom shelves.</p>
-                <div class="slider">
-                    <img src="assets/img/project3_before.jpg" alt="Before">
-                    <img src="assets/img/project3_after.jpg" alt="After">
+                <div class="slider-container">
+                    <div class="slider" data-project="3">
+                        <div class="slide active">
+                            <img src="assets/img/project3_before.jpg" alt="Before">
+                            <div class="slide-label">Before</div>
+                        </div>
+                        <div class="slide">
+                            <img src="assets/img/project3_after.jpg" alt="After">
+                            <div class="slide-label">After</div>
+                        </div>
+                    </div>
+                    <button class="prev-btn" onclick="event.stopPropagation(); changeSlide(-1, 3)">&#8249;</button>
+                    <button class="next-btn" onclick="event.stopPropagation(); changeSlide(1, 3)">&#8250;</button>
+                    <div class="slide-indicators">
+                        <span class="indicator active" onclick="event.stopPropagation(); currentSlide(1, 3)"></span>
+                        <span class="indicator" onclick="event.stopPropagation(); currentSlide(2, 3)"></span>
+                    </div>
+                </div>
+                <div class="project-hover-overlay">
+                    <button class="view-details-btn" onclick="openModal(3)">View More Details</button>
                 </div>
             </div>
         </div>
@@ -47,7 +95,141 @@
             <h2>Follow Our Work</h2>
             <iframe src="https://snapwidget.com/embed/1060751" class="insta-frame" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
         </div>
+
+        <section class="contact-cta-section">
+            <div class="contact-cta-content">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Get a free consultation and quote for your next construction or renovation project. Our experienced team is ready to bring your vision to life.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="primary-cta-btn">Get Free Quote</a>
+                    <a href="contact.html" class="secondary-cta-btn">Contact Us</a>
+                </div>
+                <div class="contact-highlights">
+                    <div class="highlight-item">
+                        <span class="highlight-icon">📞</span>
+                        <span>Free Consultation</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">💰</span>
+                        <span>No Obligation Quote</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">⚡</span>
+                        <span>Quick Response</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Project Modals -->
+    <div id="project-modal-1" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal(1)">&times;</span>
+            <h2>Bathroom Renovation Project</h2>
+            <p class="modal-description">This complete bathroom renovation transformed an outdated space into a modern, luxurious retreat. The project included premium tile installation, contemporary fixtures, ambient lighting design, and custom vanity work. Every detail was carefully planned to maximize both functionality and aesthetic appeal.</p>
+            <div class="modal-gallery">
+                <div class="modal-slide active">
+                    <img src="assets/img/project1_before.jpg" alt="Before - Original Bathroom">
+                    <div class="modal-slide-label">Before - Original Bathroom</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project1_after.jpg" alt="After - Renovated Bathroom">
+                    <div class="modal-slide-label">After - Renovated Bathroom</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project1_before.jpg" alt="Detail - Custom Tilework">
+                    <div class="modal-slide-label">Detail - Custom Tilework</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project1_after.jpg" alt="Detail - Modern Fixtures">
+                    <div class="modal-slide-label">Detail - Modern Fixtures</div>
+                </div>
+            </div>
+            <div class="modal-nav">
+                <button class="modal-prev" onclick="changeModalSlide(-1, 1)">&#8249;</button>
+                <button class="modal-next" onclick="changeModalSlide(1, 1)">&#8250;</button>
+            </div>
+            <div class="modal-indicators">
+                <span class="modal-indicator active" onclick="currentModalSlide(1, 1)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(2, 1)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(3, 1)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(4, 1)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-modal-2" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal(2)">&times;</span>
+            <h2>Kitchen Remodel Project</h2>
+            <p class="modal-description">A stunning kitchen transformation featuring custom cabinetry, premium countertops, designer backsplash, and state-of-the-art lighting. This project maximized storage space while creating an open, inviting atmosphere perfect for both cooking and entertaining.</p>
+            <div class="modal-gallery">
+                <div class="modal-slide active">
+                    <img src="assets/img/project2_before.jpg" alt="Before - Original Kitchen">
+                    <div class="modal-slide-label">Before - Original Kitchen</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project2_after.jpg" alt="After - Remodeled Kitchen">
+                    <div class="modal-slide-label">After - Remodeled Kitchen</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project2_before.jpg" alt="Detail - Custom Cabinetry">
+                    <div class="modal-slide-label">Detail - Custom Cabinetry</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project2_after.jpg" alt="Detail - Designer Backsplash">
+                    <div class="modal-slide-label">Detail - Designer Backsplash</div>
+                </div>
+            </div>
+            <div class="modal-nav">
+                <button class="modal-prev" onclick="changeModalSlide(-1, 2)">&#8249;</button>
+                <button class="modal-next" onclick="changeModalSlide(1, 2)">&#8250;</button>
+            </div>
+            <div class="modal-indicators">
+                <span class="modal-indicator active" onclick="currentModalSlide(1, 2)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(2, 2)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(3, 2)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(4, 2)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="project-modal-3" class="project-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal(3)">&times;</span>
+            <h2>Living Room Makeover Project</h2>
+            <p class="modal-description">Complete living room transformation featuring premium hardwood flooring, professional painting, custom molding installation, and built-in shelving systems. This project created a sophisticated, comfortable space that perfectly balances style and functionality.</p>
+            <div class="modal-gallery">
+                <div class="modal-slide active">
+                    <img src="assets/img/project3_before.jpg" alt="Before - Original Living Room">
+                    <div class="modal-slide-label">Before - Original Living Room</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project3_after.jpg" alt="After - Renovated Living Room">
+                    <div class="modal-slide-label">After - Renovated Living Room</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project3_before.jpg" alt="Detail - Custom Shelving">
+                    <div class="modal-slide-label">Detail - Custom Shelving</div>
+                </div>
+                <div class="modal-slide">
+                    <img src="assets/img/project3_after.jpg" alt="Detail - Premium Flooring">
+                    <div class="modal-slide-label">Detail - Premium Flooring</div>
+                </div>
+            </div>
+            <div class="modal-nav">
+                <button class="modal-prev" onclick="changeModalSlide(-1, 3)">&#8249;</button>
+                <button class="modal-next" onclick="changeModalSlide(1, 3)">&#8250;</button>
+            </div>
+            <div class="modal-indicators">
+                <span class="modal-indicator active" onclick="currentModalSlide(1, 3)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(2, 3)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(3, 3)"></span>
+                <span class="modal-indicator" onclick="currentModalSlide(4, 3)"></span>
+            </div>
+        </div>
+    </div>
 
     <div id="footer"></div>
     <script src="js/script.js"></script>

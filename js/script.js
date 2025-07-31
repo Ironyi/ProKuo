@@ -63,3 +63,143 @@ window.addEventListener("DOMContentLoaded", () => {
         setInterval(showNextSlide, 5000); // every 5 seconds
     }
 });
+
+// ===== Project Gallery Slider Script =====
+let currentSlideIndex = [1, 1, 1]; // Track current slide for each project
+
+function changeSlide(direction, projectNum) {
+    const slider = document.querySelector(`[data-project="${projectNum}"]`);
+    const slides = slider.querySelectorAll('.slide');
+    const indicators = slider.parentElement.querySelectorAll('.indicator');
+    
+    // Remove active class from current slide and indicator
+    slides[currentSlideIndex[projectNum - 1] - 1].classList.remove('active');
+    indicators[currentSlideIndex[projectNum - 1] - 1].classList.remove('active');
+    
+    // Update slide index
+    currentSlideIndex[projectNum - 1] += direction;
+    
+    // Loop around if necessary
+    if (currentSlideIndex[projectNum - 1] > slides.length) {
+        currentSlideIndex[projectNum - 1] = 1;
+    }
+    if (currentSlideIndex[projectNum - 1] < 1) {
+        currentSlideIndex[projectNum - 1] = slides.length;
+    }
+    
+    // Add active class to new slide and indicator
+    slides[currentSlideIndex[projectNum - 1] - 1].classList.add('active');
+    indicators[currentSlideIndex[projectNum - 1] - 1].classList.add('active');
+}
+
+function currentSlide(slideNum, projectNum) {
+    const slider = document.querySelector(`[data-project="${projectNum}"]`);
+    const slides = slider.querySelectorAll('.slide');
+    const indicators = slider.parentElement.querySelectorAll('.indicator');
+    
+    // Remove active class from all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Set current slide index
+    currentSlideIndex[projectNum - 1] = slideNum;
+    
+    // Add active class to selected slide and indicator
+    slides[slideNum - 1].classList.add('active');
+    indicators[slideNum - 1].classList.add('active');
+}
+
+// Add keyboard navigation
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+        // Go to previous slide for all projects
+        for (let i = 1; i <= 3; i++) {
+            changeSlide(-1, i);
+        }
+    } else if (event.key === 'ArrowRight') {
+        // Go to next slide for all projects
+        for (let i = 1; i <= 3; i++) {
+            changeSlide(1, i);
+        }
+    }
+});
+
+// Modal functionality
+let currentModalSlideIndex = [1, 1, 1]; // Track current slide for each modal
+
+function openModal(projectNum) {
+    const modal = document.getElementById(`project-modal-${projectNum}`);
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+    
+    // Reset to first slide when opening modal
+    currentModalSlideIndex[projectNum - 1] = 1;
+    showModalSlide(projectNum, 1);
+}
+
+function closeModal(projectNum) {
+    const modal = document.getElementById(`project-modal-${projectNum}`);
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
+
+function changeModalSlide(direction, projectNum) {
+    const slides = document.querySelectorAll(`#project-modal-${projectNum} .modal-slide`);
+    const totalSlides = slides.length;
+    
+    // Update slide index
+    currentModalSlideIndex[projectNum - 1] += direction;
+    
+    // Wrap around if necessary
+    if (currentModalSlideIndex[projectNum - 1] > totalSlides) {
+        currentModalSlideIndex[projectNum - 1] = 1;
+    } else if (currentModalSlideIndex[projectNum - 1] < 1) {
+        currentModalSlideIndex[projectNum - 1] = totalSlides;
+    }
+    
+    showModalSlide(projectNum, currentModalSlideIndex[projectNum - 1]);
+}
+
+function currentModalSlide(slideNum, projectNum) {
+    showModalSlide(projectNum, slideNum);
+}
+
+function showModalSlide(projectNum, slideNum) {
+    const slides = document.querySelectorAll(`#project-modal-${projectNum} .modal-slide`);
+    const indicators = document.querySelectorAll(`#project-modal-${projectNum} .modal-indicator`);
+    
+    // Remove active class from all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Set current slide index
+    currentModalSlideIndex[projectNum - 1] = slideNum;
+    
+    // Add active class to selected slide and indicator
+    slides[slideNum - 1].classList.add('active');
+    indicators[slideNum - 1].classList.add('active');
+}
+
+// Close modal when clicking outside of modal content
+window.addEventListener('click', function(event) {
+    const modals = document.querySelectorAll('.project-modal');
+    modals.forEach(modal => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+    });
+});
+
+// Close modal on escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const modals = document.querySelectorAll('.project-modal');
+        modals.forEach(modal => {
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        });
+    }
+});
